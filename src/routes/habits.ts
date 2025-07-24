@@ -35,7 +35,7 @@ export async function habitsRoutes(app: FastifyInstance) {
     })
 
     app.post('/habits', {
-        preHandler: [ checkSessionIdExists ]
+        //preHandler: [ checkSessionIdExists ]
     }, async (req, res) => {
         const createHabitsBodySchema = z.object({
             habit: z.string(),
