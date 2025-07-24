@@ -4,9 +4,9 @@ import { db } from "../habits-database";
 import { randomUUID } from "node:crypto";
 import { checkSessionIdExists } from "../middlewares/check-session-id-exists";
 
-//Unitários:
-//Integração:
-//e2e - ponta a ponta:
+//Unitários: Testam uma unica unidade da aplicação, isoladamente
+//Integração: Teste de duas ou mais unidades da aplicação
+//E2E - ponta a ponta: simula um usuário real utilizando da aplicação
 
 export async function habitsRoutes(app: FastifyInstance) {
     app.get('/habits', {
