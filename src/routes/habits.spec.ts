@@ -1,8 +1,9 @@
-import { test, expect, beforeAll, afterAll } from 'vitest'
+import { test, expect, beforeAll, afterAll, describe } from 'vitest'
 import request from 'supertest'
-import { app } from '../src/app'
+import { app } from '../app'
 
-beforeAll(async () => {
+describe('Habits routes', () => {
+    beforeAll(async () => {
     app.ready()
 })
 
@@ -18,3 +19,5 @@ test('user can create a new habit', async () => {
             category: 'Personal'
       }).expect(201)
 })
+})
+

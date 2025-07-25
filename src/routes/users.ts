@@ -6,7 +6,7 @@ import { randomUUID } from "crypto"
 // Cookie <-> São formas de mantermos o contexto entre requisições
 
 export async function usersRoutes(app: FastifyInstance) {
-    app.get('/', async () => {
+    app.get('/users', async () => {
         const users = await db('users').select('*')
 
         return { users }
