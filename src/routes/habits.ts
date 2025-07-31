@@ -34,8 +34,8 @@ export async function habitsRoutes(app: FastifyInstance) {
         return habit
     })
 
-    app.post('/habits', {
-        //preHandler: [ checkSessionIdExists ]
+    app.post('/habits', { 
+        preHandler: [ checkSessionIdExists ] 
     }, async (req, res) => {
         const createHabitsBodySchema = z.object({
             habit: z.string(),
@@ -45,15 +45,15 @@ export async function habitsRoutes(app: FastifyInstance) {
         const { habit, category } = createHabitsBodySchema.parse(req.body);
 
         let sessionID = req.cookies.sessionID
-
+        
         if (!sessionID) {
-                sessionID = randomUUID()
-    
-                res.cookie('sessionID', sessionID, {
-                    path: '/',
-                    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 Dias
-                })
-            }
+            sessionID = randomUUID()
+            
+            res.cookie('sessionID', sessionID, {
+                path: '/',
+                maxAge: 1000 * 60 * 60 * 24 * 7, // 7 Dias
+            })
+        }
         await db('habits')
         .insert({
             habitId: randomUUID(),
