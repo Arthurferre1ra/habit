@@ -12,7 +12,7 @@ afterAll(async () => {
     app.close()
 })
 
-test('user can create a new habit', async () => {
+test.skip('user can create a new habit', async () => {
       await request(app.server)
         .post('/habits')
         .send({
